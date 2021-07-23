@@ -1,0 +1,163 @@
+@import url("https://fonts.googleapis.com/css2?family=Kanit&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+}
+:root {
+  --gear1: 6;
+  --gear2: 6;
+}
+::selection {
+  color: white;
+  background-color: black;
+}
+body {
+  background-color: blueviolet;
+  height: 100vh;
+  width: 100vw;
+  overflow-x: hidden;
+}
+.outermost {
+  background-color: blueviolet;
+  height: 100vh;
+  width: 100vw;
+  display: grid;
+  place-items: center;
+}
+.inner {
+  width: 95vw;
+  height: 95vh;
+  background-color: black;
+  display: flex;
+  align-items: center;
+  max-width: 100vw;
+}
+.gears {
+  width: 100%;
+  height: 95%;
+
+  background-color: red;
+  margin: calc((2.5 / 100) * 95vh);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+.gear1,
+.gear2 {
+  margin: 10px;
+  border-radius: 50%;
+  background-color: black;
+  display: flex;
+  justify-content: center;
+  border: 5px solid black;
+  align-items: center;
+  width: 100%;
+}
+.gear2 {
+  transform: rotate(-90deg);
+}
+.controller {
+  width: 40%;
+  height: 95%;
+  background-color: red;
+  margin: calc((2.5 / 100) * 95vh);
+  margin-left: 0;
+}
+.tooth {
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  background: black;
+  border-top-left-radius: 30%;
+  border-top-right-radius: 30%;
+}
+.gear1 .tooth {
+  transform: rotate(calc(360deg * var(--i) / var(--gear1)))
+    translate(0, calc((-2 * var(--gear1) * 25px * 7 / 44)));
+}
+.gear2 .tooth {
+  transform: rotate(calc(360deg * var(--i) / var(--gear2)))
+    translate(0, calc((-2 * var(--gear2) * 25px * 7 / 44)));
+}
+.controller {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.g {
+  width: 100%;
+  display: grid;
+  place-items: center;
+}
+.ng1::before,
+.ng2::before {
+  margin-top: 15px;
+  display: block;
+  width: 80%;
+  padding: 2px 0px;
+  font-size: 17px;
+  text-align: left;
+  font-family: "Kanit", sans-serif;
+  color: white;
+}
+.ng1::before {
+  content: "Gear 1:";
+}
+.ng2::before {
+  content: "Gear 2:";
+}
+.rpm::before {
+  content: "RPM of gear 1:";
+  display: block;
+  width: 80%;
+  padding: 2px 0px;
+  font-size: 17px;
+  text-align: left;
+  font-family: "Kanit", sans-serif;
+  color: white;
+}
+.details {
+  display: block;
+  width: 80%;
+  padding: 2px 0px;
+  font-size: 20px;
+  text-align: left;
+  color: white;
+  margin-top: 25px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  background-color: #0075ff;
+  border-radius: 10px;
+  font-family: "Kanit", sans-serif;
+}
+.slider {
+  width: 80%;
+}
+
+@keyframes rotate {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media only screen and (max-width: 650px) {
+  .inner {
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+  }
+  .gears {
+    max-height: 50vh;
+    width: 95%;
+    margin: 0px;
+  }
+  .controller {
+    max-height: 50vh;
+    width: 95%;
+    margin: 0px;
+  }
+}
